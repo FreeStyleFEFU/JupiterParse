@@ -3,16 +3,16 @@ import matplotlib.pyplot as plt
 
 
 def babys_quantity():
-    data_frame_1980 = pd.read_table('data/yob1880.txt', sep=',', engine='python', names=(['name', 'sex', 'quantity']))
-    print('Число младенцев каждого пола за 1980 год')
-    print(data_frame_1980.groupby('sex').sum().reset_index())
-    return data_frame_1980
+    data_frame_1880 = pd.read_table('data/yob1880.txt', sep=',', engine='python', names=(['name', 'sex', 'quantity']))
+    print('Число младенцев каждого пола за 1880 год')
+    print(data_frame_1880.groupby('sex').sum().reset_index())
+    return data_frame_1880
 
 
-def total_data_frame(data_frame_1980):
-    data_frame_1980['year'] = 1980
-    total_data_frame = data_frame_1980
-    for year in range(1981, 2011):
+def total_data_frame(data_frame_1880):
+    data_frame_1880['year'] = 1880
+    total_data_frame = data_frame_1880
+    for year in range(1881, 2011):
         this_data_frame = pd.read_table(f'data/yob{year}.txt', sep=',', engine='python', names=(['name', 'sex', 'quantity']))
         this_data_frame['year'] = year
         total_data_frame = pd.concat([total_data_frame, this_data_frame], ignore_index=True)
@@ -64,13 +64,22 @@ def jonny_natalie_bob_graphics(total_data_frame, total_quantity):
 
     plt.show()
 
+    return total_data_frame_without_sex
 
-data_frame_1980 = babys_quantity()
 
-total_data_frame = total_data_frame(data_frame_1980)
+def popular_names(total_data_frames_without_sex):
+    print('Самые популярные имена по годам')
+    print(total_data_frames_without_sex.loc[total_data_frames_without_sex.groupby('year')['quantity'].idxmax()])
+
+
+data_frame_1880 = babys_quantity()
+
+total_data_frame = total_data_frame(data_frame_1880)
 
 quantity_for_every_year(total_data_frame)
 
 total_quantity = name_proportion(total_data_frame)
 
-jonny_natalie_bob_graphics(total_data_frame, total_quantity)
+total_data_frame_without_sex = jonny_natalie_bob_graphics(total_data_frame, total_quantity)
+
+popular_names(total_data_frame_without_sex)
