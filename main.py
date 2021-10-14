@@ -55,7 +55,7 @@ def jonny_natalie_bob_graphics(total_data_frame, total_quantity):
     jonny_data_frame.plot(x='year', y='quantity', label='Jonny quantity')
     natalie_data_frame.plot(x='year', y='quantity', label='Natalie quantity')
     bob_data_frame.plot(x='year', y='quantity', label='Bob quantity')
-    michael_data_frame.plot(x='year', y='quantity', label='Bob quantity')
+    michael_data_frame.plot(x='year', y='quantity', label='My quantity')
 
     jonny_data_frame['proportion'] = jonny_data_frame['quantity']/total_quantity
     natalie_data_frame['proportion'] = natalie_data_frame['quantity']/total_quantity
