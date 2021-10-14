@@ -49,19 +49,23 @@ def jonny_natalie_bob_graphics(total_data_frame, total_quantity):
     jonny_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Jonny'].copy(deep=True)
     natalie_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Natalie'].copy(deep=True)
     bob_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Bob'].copy(deep=True)
+    michael_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Michael'].copy(deep=True)
+
 
     jonny_data_frame.plot(x='year', y='quantity', label='Jonny quantity')
     natalie_data_frame.plot(x='year', y='quantity', label='Natalie quantity')
     bob_data_frame.plot(x='year', y='quantity', label='Bob quantity')
+    michael_data_frame.plot(x='year', y='quantity', label='Bob quantity')
 
     jonny_data_frame['proportion'] = jonny_data_frame['quantity']/total_quantity
     natalie_data_frame['proportion'] = natalie_data_frame['quantity']/total_quantity
     bob_data_frame['proportion'] = bob_data_frame['quantity']/total_quantity
+    michael_data_frame['proportion'] = michael_data_frame['quantity']/total_quantity
 
     jonny_data_frame.drop('quantity', axis=1).plot(x='year', y='proportion', label='Jonny proportion')
     natalie_data_frame.drop('quantity', axis=1).plot(x='year', y='proportion', label='Natalie proportion')
     bob_data_frame.drop('quantity', axis=1).plot(x='year', y='proportion', label='Bob proportion')
-
+    michael_data_frame.drop('quantity', axis=1).plot(x='year', y='proportion', label='My proportion')
     plt.show()
 
     return total_data_frame_without_sex
