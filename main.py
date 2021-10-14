@@ -40,15 +40,15 @@ def name_proportion(total_data_frame):
 
     print('Доля данного имени от общего количества')
     print(name_proportion)
-    return  total_quantity
+    return total_quantity
 
 
 def jonny_natalie_bob_graphics(total_data_frame, total_quantity):
     total_data_frame_without_sex = total_data_frame.drop('sex', axis=1)
 
-    jonny_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Jonny']
-    natalie_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Natalie']
-    bob_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Bob']
+    jonny_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Jonny'].copy(deep=True)
+    natalie_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Natalie'].copy(deep=True)
+    bob_data_frame = total_data_frame_without_sex[total_data_frame_without_sex['name'] == 'Bob'].copy(deep=True)
 
     jonny_data_frame.plot(x='year', y='quantity', label='Jonny quantity')
     natalie_data_frame.plot(x='year', y='quantity', label='Natalie quantity')
